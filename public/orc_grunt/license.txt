@@ -1,0 +1,11 @@
+Model Information:
+* title:	Orc Grunt
+* source:	https://sketchfab.com/3d-models/orc-grunt-493dddfd34ac4f19aa88ef6281f22459
+* author:	Northcliffe (https://sketchfab.com/Samson.Northcliffe.Rydenko)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Orc Grunt" (https://sketchfab.com/3d-models/orc-grunt-493dddfd34ac4f19aa88ef6281f22459) by Northcliffe (https://sketchfab.com/Samson.Northcliffe.Rydenko) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
