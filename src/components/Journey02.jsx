@@ -6,6 +6,8 @@ function Journey02() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // Scene - Like the scenario
+    const scene = new THREE.Scene();
   }, []);
   return (
     <div>
