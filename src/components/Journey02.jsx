@@ -27,6 +27,11 @@ function Journey02() {
     camera.position.x = 1;
     camera.position.y = 1;
     scene.add(camera);
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasRef.current,
+    });
   }, []);
   return (
     <div>
