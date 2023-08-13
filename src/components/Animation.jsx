@@ -40,6 +40,12 @@ function Animation() {
       // Clock
       const elapsedTime = clock.getElapsedTime();
 
+      // mesh.rotation.y = elapsedTime * Math.PI / 2
+      camera.position.y = Math.sin(elapsedTime);
+      camera.position.x = Math.cos(elapsedTime);
+
+      camera.lookAt(mesh.position);
+
       // Rendering every tick
       renderer.render(scene, camera);
 
