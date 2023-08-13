@@ -32,6 +32,7 @@ function Journey02() {
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
     });
+    renderer.setSize(sizes.width, sizes.height);
   }, []);
   return (
     <div>
