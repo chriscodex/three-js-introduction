@@ -37,6 +37,11 @@ function Animation() {
     const clock = new THREE.Clock();
 
     const tick = () => {
+      // Rendering every tick
+      renderer.render(scene, camera);
+
+      // Method that call the next frame
+      window.requestAnimationFrame(tick);
     };
     tick();
   }, []);
