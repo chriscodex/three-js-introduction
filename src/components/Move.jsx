@@ -34,6 +34,12 @@ function Move() {
     // Legth of the vector
     // console.log(mesh.position.length());
 
+    /* Scale */
+    mesh.scale.x = 2;
+    mesh.scale.y = 0.5;
+    mesh.scale.z = 0.5;
+    mesh.scale.set(2, 0.5, 0.5);
+
     // Sizes
     const sizes = {
       width: 800,
