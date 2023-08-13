@@ -14,6 +14,12 @@ function Journey02() {
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
+
+    // Sizes
+    const sizes = {
+      width: 800,
+      height: 600,
+    };
   }, []);
   return (
     <div>
