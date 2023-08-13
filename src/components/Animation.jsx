@@ -37,6 +37,9 @@ function Animation() {
     const clock = new THREE.Clock();
 
     const tick = () => {
+      // Clock
+      const elapsedTime = clock.getElapsedTime();
+
       // Rendering every tick
       renderer.render(scene, camera);
 
