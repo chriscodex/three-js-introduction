@@ -9,6 +9,10 @@ function Move() {
     // Scene - Like the scenario
     const scene = new THREE.Scene();
 
+    // Axes helper
+    const axesHelper = new THREE.AxesHelper(2);
+    scene.add(axesHelper);
+
     /* Objects */
     // Red Cube
     const geometry = new THREE.BoxGeometry(1, 1, 1);
