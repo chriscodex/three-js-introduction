@@ -32,9 +32,13 @@ function Animation() {
     });
     renderer.setSize(sizes.width, sizes.height);
 
-    renderer.render(scene, camera);
+    /* Animations */
+    // Instance the clock
+    const clock = new THREE.Clock();
 
-    console.log(canvasRef.current);
+    const tick = () => {
+    };
+    tick();
   }, []);
 
   return (
