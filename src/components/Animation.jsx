@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-function Journey02() {
+function Animation() {
   // Canvas
   const canvasRef = useRef(null);
 
@@ -24,8 +24,6 @@ function Journey02() {
     // Camera
     const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
     camera.position.z = 3;
-    camera.position.x = 1;
-    camera.position.y = 1;
     scene.add(camera);
 
     // Renderer
@@ -38,6 +36,7 @@ function Journey02() {
 
     console.log(canvasRef.current);
   }, []);
+
   return (
     <div>
       <canvas ref={canvasRef}></canvas>
@@ -45,4 +44,4 @@ function Journey02() {
   );
 }
 
-export { Journey02 };
+export { Animation };
