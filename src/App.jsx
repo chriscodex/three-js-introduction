@@ -1,10 +1,12 @@
-import { Journey02 } from './components/Journey02';
+import { Move } from './components/Move';
+import { Groups } from './components/Groups';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <Journey02 />
+      <Move />
+      <Groups />
     </div>
   );
 }
