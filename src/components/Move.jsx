@@ -40,6 +40,13 @@ function Move() {
     mesh.scale.z = 0.5;
     mesh.scale.set(2, 0.5, 0.5);
 
+    /* Rotation */
+    // Change the order
+    mesh.rotation.reorder('YXZ');
+    mesh.rotation.y = Math.PI / 4;
+    mesh.rotation.z = -Math.PI / 4;
+    mesh.position.y = 1;
+
     // Sizes
     const sizes = {
       width: 800,
