@@ -33,6 +33,10 @@ function Journey02() {
       canvas: canvasRef.current,
     });
     renderer.setSize(sizes.width, sizes.height);
+
+    renderer.render(scene, camera);
+
+    console.log(canvasRef.current);
   }, []);
   return (
     <div>
