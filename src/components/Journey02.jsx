@@ -26,6 +26,7 @@ function Journey02() {
     camera.position.z = 3;
     camera.position.x = 1;
     camera.position.y = 1;
+    scene.add(camera);
   }, []);
   return (
     <div>
