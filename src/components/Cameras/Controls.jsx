@@ -38,6 +38,16 @@ function Controls() {
     camera.lookAt(mesh.position);
     scene.add(camera);
 
+    /* Cursor Movement for Camera */
+    const cursor = {
+      x: 0,
+      y: 0,
+    };
+    window.addEventListener('mousemove', (event) => {
+      cursor.x = event.clientX / sizes.width - 0.5;
+      cursor.y = -(event.clientY / sizes.height - 0.5);
+    });
+
     // Renderer
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
