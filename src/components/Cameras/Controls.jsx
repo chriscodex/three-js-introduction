@@ -27,6 +27,17 @@ function Controls() {
       height: 600,
     };
 
+    // Camera
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      sizes.width / sizes.height,
+      1,
+      100
+    );
+    camera.position.z = 3;
+    camera.lookAt(mesh.position);
+    scene.add(camera);
+
     // Renderer
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
