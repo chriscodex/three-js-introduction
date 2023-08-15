@@ -29,6 +29,13 @@ function Fullscreen() {
       height: window.innerHeight,
     };
 
+    /* Resize */
+    window.addEventListener('resize', () => {
+      // Update sizes
+      sizes.width = window.innerWidth;
+      sizes.height = window.innerHeight;
+    });
+
     // Camera
     const camera = new THREE.PerspectiveCamera(
       75,
