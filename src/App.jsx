@@ -10,12 +10,13 @@ import { Orbit } from './components/Cameras/Orbit';
 import { Fullscreen } from './components/Fullscreen/Fullscreen';
 import { BufferGeometry } from './components/Geometries/BufferGeometry';
 import { BufferGeometryMultiples } from './components/Geometries/BufferGeometryMultiples';
+import { DatGUI } from './components/DebugUI/DatGUI';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <BufferGeometryMultiples />
+      <DatGUI />
     </div>
   );
 }
