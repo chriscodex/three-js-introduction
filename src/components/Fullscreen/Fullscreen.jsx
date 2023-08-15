@@ -44,6 +44,39 @@ function Fullscreen() {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     });
 
+    // Fullscreen Mode
+    window.addEventListener('dblclick', () => {
+      const canvas = canvasRef.current;
+
+      if (canvas) {
+        if (canvas.requestFullscreen) {
+          if (document.fullscreenElement) {
+            document.exitFullscreen();
+          } else {
+            canvas.requestFullscreen();
+          }
+        } else if (canvas.mozRequestFullScreen) {
+          if (document.mozFullScreenElement) {
+            document.mozCancelFullScreen();
+          } else {
+            canvas.mozRequestFullScreen();
+          }
+        } else if (canvas.webkitRequestFullscreen) {
+          if (document.webkitFullscreenElement) {
+            document.webkitExitFullscreen();
+          } else {
+            canvas.webkitRequestFullscreen();
+          }
+        } else if (canvas.msRequestFullscreen) {
+          if (document.msFullscreenElement) {
+            document.msExitFullscreen();
+          } else {
+            canvas.msRequestFullscreen();
+          }
+        }
+      }
+    });
+
     // Camera
     const camera = new THREE.PerspectiveCamera(
       75,
