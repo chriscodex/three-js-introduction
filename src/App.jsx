@@ -9,20 +9,13 @@ import { ControlsAround } from './components/Cameras/ControlsAround';
 import { Orbit } from './components/Cameras/Orbit';
 import { Fullscreen } from './components/Fullscreen/Fullscreen';
 import { BufferGeometry } from './components/Geometries/BufferGeometry';
+import { BufferGeometryMultiples } from './components/Geometries/BufferGeometryMultiples';
 import './App.css';
 
 function App() {
   return (
     <div>
-      {/* <h2>Movement</h2>
-      <Move />
-      <h2>Groups</h2>
-      <Groups />
-      <h3>Animation</h3>
-      <Animation /> */}
-      {/* <h1>Gsap Animation</h1>
-      <GsapAnimation /> */}
-      <BufferGeometry />
+      <BufferGeometryMultiples />
     </div>
   );
 }
