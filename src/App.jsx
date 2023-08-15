@@ -7,6 +7,8 @@ import { Orthographic } from './components/Cameras/Orthographic';
 import { Controls } from './components/Cameras/Controls';
 import { ControlsAround } from './components/Cameras/ControlsAround';
 import { Orbit } from './components/Cameras/Orbit';
+import { Fullscreen } from './components/Fullscreen/Fullscreen';
+import { BufferGeometry } from './components/Geometries/BufferGeometry';
 import './App.css';
 
 function App() {
@@ -20,8 +22,7 @@ function App() {
       <Animation /> */}
       {/* <h1>Gsap Animation</h1>
       <GsapAnimation /> */}
-      <h1>Controls Around</h1>
-      <Orbit />
+      <BufferGeometry />
     </div>
   );
 }
