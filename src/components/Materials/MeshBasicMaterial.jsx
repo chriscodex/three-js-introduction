@@ -5,7 +5,7 @@ import colorImage from '/textures/door/color.jpg';
 import mapCap from '/class12/textures/matcaps/3.png';
 import gradientTxt from '/class12/textures/gradients/3.jpg';
 
-function Materials() {
+function MeshBasicMaterial() {
   /* Textures */
   // Loading manager
   const loadingManager = new THREE.LoadingManager();
@@ -181,4 +181,4 @@ function Materials() {
   );
 }
 
-export { Materials };
+export { MeshBasicMaterial };

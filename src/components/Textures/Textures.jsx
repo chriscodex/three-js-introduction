@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import colorImage from '/public/textures/door/color.jpg';
+import colorImage from '/textures/door/color.jpg';
 
 function Textures() {
   /* Textures */
