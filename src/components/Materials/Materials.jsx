@@ -45,6 +45,9 @@ function Materials() {
     // Opacity
     material.transparent = true;
     material.opacity = 0.5
+    // Apha
+    material.transparent = true;
+    material.alphaMap = doorAlphaTexture;
     
     // Sphere
     const sphere = new THREE.Mesh(
