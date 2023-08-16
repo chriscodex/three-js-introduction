@@ -36,6 +36,17 @@ function Textures() {
     '/public/textures/door/alpha.jpg'
   );
 
+  // Minification filter
+  const checkMinTexture = textureLoader.load('/public/textures/checkerboard-1024x1024.png');
+  // checkMinTexture.minFilter = THREE.NearestFilter
+  checkMinTexture.generateMipmaps = false;
+
+  // Magnification filter
+  const checkMagTexture = textureLoader.load('/public/textures/checkerboard-8x8.png');
+  const minecraftTexture = textureLoader.load('/public/textures/minecraft.png');
+  checkMagTexture.magFilter = THREE.NearestFilter
+  minecraftTexture.magFilter = THREE.NearestFilter
+
   // colorTexture.repeat.x = 2
   // colorTexture.repeat.y = 3
 
@@ -52,6 +63,7 @@ function Textures() {
   // colorTexture.center.x = 0.5
   // colorTexture.center.y = 0.5
 
+
   // Canvas
   const canvasRef = useRef(null);
 
@@ -61,7 +73,11 @@ function Textures() {
 
     // Red Cube
     const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ map: colorTexture });
+    // const material = new THREE.MeshBasicMaterial({ map: colorTexture });
+    // Minification
+    // const material = new THREE.MeshBasicMaterial({ map: checkMinTexture });
+    // Magnification
+    const material = new THREE.MeshBasicMaterial({ map: minecraftTexture });
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
     // console.log(geometry.attributes.uv);
@@ -124,7 +140,7 @@ function Textures() {
     const camera = new THREE.PerspectiveCamera(
       75,
       sizes.width / sizes.height,
-      1,
+      0.1,
       100
     );
     camera.position.z = 3;
