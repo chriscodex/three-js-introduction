@@ -9,25 +9,48 @@ function Textures() {
   const loadingManager = new THREE.LoadingManager();
   loadingManager.onStart = () => {
     console.log('on Start');
-  }
+  };
   loadingManager.onLoad = () => {
     console.log('on Load');
-  }
+  };
   loadingManager.onProgress = () => {
     console.log('on Progress');
-  }
+  };
   loadingManager.onError = () => {
     console.log('on Error');
-  }
+  };
 
   const textureLoader = new THREE.TextureLoader(loadingManager);
+
   const colorTexture = textureLoader.load('/public/textures/door/color.jpg');
   const alphaTexture = textureLoader.load('/public/textures/door/alpha.jpg');
   const heightTexture = textureLoader.load('/public/textures/door/height.jpg');
   const normalTexture = textureLoader.load('/public/textures/door/normal.jpg');
-  const ambientOcclusionTexture = textureLoader.load('/public/textures/door/ambientOcclusion.jpg');
-  const metalnessTexture = textureLoader.load('/public/textures/door/alpha.jpg');
-  const roughnessTexture = textureLoader.load('/public/textures/door/alpha.jpg');
+  const ambientOcclusionTexture = textureLoader.load(
+    '/public/textures/door/ambientOcclusion.jpg'
+  );
+  const metalnessTexture = textureLoader.load(
+    '/public/textures/door/alpha.jpg'
+  );
+  const roughnessTexture = textureLoader.load(
+    '/public/textures/door/alpha.jpg'
+  );
+
+  // colorTexture.repeat.x = 2
+  // colorTexture.repeat.y = 3
+
+  // colorTexture.wrapS = THREE.RepeatWrapping
+  // colorTexture.wrapT = THREE.RepeatWrapping
+
+  // colorTexture.wrapS = THREE.MirroredRepeatWrapping
+  // colorTexture.wrapT = THREE.MirroredRepeatWrapping
+
+  // colorTexture.offset.x = 0.5
+  // colorTexture.offset.y = 0.5
+
+  // colorTexture.rotation = Math.PI / 4
+  // colorTexture.center.x = 0.5
+  // colorTexture.center.y = 0.5
 
   // Canvas
   const canvasRef = useRef(null);
@@ -40,14 +63,8 @@ function Textures() {
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshBasicMaterial({ map: colorTexture });
     const mesh = new THREE.Mesh(geometry, material);
-
-    // Edges
-    const edges = new THREE.EdgesGeometry(geometry);
-    const lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 });
-    const edgesMesh = new THREE.LineSegments(edges, lineMaterial);
-    mesh.add(edgesMesh);
-
     scene.add(mesh);
+    // console.log(geometry.attributes.uv);
 
     // Sizes
     const sizes = {
