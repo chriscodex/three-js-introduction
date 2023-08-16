@@ -1,14 +1,34 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import colorImage from '/public/textures/door/color.jpg'
+import colorImage from '/public/textures/door/color.jpg';
 
 function Textures() {
-  // Textures
-  const loadingManager = new THREE.LoadingManager()
-  const textureLoader = new THREE.TextureLoader(loadingManager)
-  const texture = textureLoader.load('/public/textures/door/color.jpg')
-  
+  /* Textures */
+  // Loading manager
+  const loadingManager = new THREE.LoadingManager();
+  loadingManager.onStart = () => {
+    console.log('on Start');
+  }
+  loadingManager.onLoad = () => {
+    console.log('on Load');
+  }
+  loadingManager.onProgress = () => {
+    console.log('on Progress');
+  }
+  loadingManager.onError = () => {
+    console.log('on Error');
+  }
+
+  const textureLoader = new THREE.TextureLoader(loadingManager);
+  const colorTexture = textureLoader.load('/public/textures/door/color.jpg');
+  const alphaTexture = textureLoader.load('/public/textures/door/alpha.jpg');
+  const heightTexture = textureLoader.load('/public/textures/door/height.jpg');
+  const normalTexture = textureLoader.load('/public/textures/door/normal.jpg');
+  const ambientOcclusionTexture = textureLoader.load('/public/textures/door/ambientOcclusion.jpg');
+  const metalnessTexture = textureLoader.load('/public/textures/door/alpha.jpg');
+  const roughnessTexture = textureLoader.load('/public/textures/door/alpha.jpg');
+
   // Canvas
   const canvasRef = useRef(null);
 
@@ -18,7 +38,7 @@ function Textures() {
 
     // Red Cube
     const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ map: texture});
+    const material = new THREE.MeshBasicMaterial({ map: colorTexture });
     const mesh = new THREE.Mesh(geometry, material);
 
     // Edges
@@ -129,4 +149,4 @@ function Textures() {
   );
 }
 
-export { Textures }
+export { Textures };
