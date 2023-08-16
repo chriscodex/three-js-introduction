@@ -41,6 +41,10 @@ function Materials() {
     const material = new THREE.MeshBasicMaterial();
     material.map = doorColorTexture
     material.color = new THREE.Color(0x00ff00)
+    // material.wireframe = true;
+    // Opacity
+    material.transparent = true;
+    material.opacity = 0.5
     
     // Sphere
     const sphere = new THREE.Mesh(
