@@ -13,12 +13,13 @@ import { BufferGeometryMultiples } from './components/Geometries/BufferGeometryM
 import { DatGUI } from './components/DebugUI/DatGUI';
 import { Textures } from './components/Textures/Textures';
 import { MeshBasicMaterial } from './components/Materials/MeshBasicMaterial';
+import { MeshNormalMaterial } from './components/Materials/MeshNormalMaterial';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <MeshBasicMaterial />
+      <MeshNormalMaterial />
     </div>
   );
 }

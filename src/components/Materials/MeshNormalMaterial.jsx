@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import mapCap from '/class12/textures/matcaps/3.png';
 import gradientTxt from '/class12/textures/gradients/3.jpg';
 
-function MeshBasicMaterial() {
+function MeshNormalMaterial() {
   /* Textures */
   // Loading manager
   const loadingManager = new THREE.LoadingManager();
@@ -37,20 +37,9 @@ function MeshBasicMaterial() {
     const scene = new THREE.Scene();
 
     // Material
-    const material = new THREE.MeshBasicMaterial();
-    material.map = doorColorTexture
-    material.color = new THREE.Color(0x00ff00)
+    const material = new THREE.MeshNormalMaterial();
+    // material.flatShading = true;
     // material.wireframe = true;
-    // Opacity
-    material.transparent = true;
-    material.opacity = 0.5
-    // Side
-    material.side = THREE.DoubleSide
-    // material.side = THREE.FrontSide
-    // material.side = THREE.BackSide
-    // Apha
-    material.transparent = true;
-    material.alphaMap = doorAlphaTexture;
     
     // Sphere
     const sphere = new THREE.Mesh(
@@ -180,4 +169,4 @@ function MeshBasicMaterial() {
   );
 }
 
-export { MeshBasicMaterial };
+export { MeshNormalMaterial }
