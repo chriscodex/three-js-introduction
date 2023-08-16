@@ -45,6 +45,10 @@ function Materials() {
     // Opacity
     material.transparent = true;
     material.opacity = 0.5
+    // Side
+    material.side = THREE.DoubleSide
+    // material.side = THREE.FrontSide
+    // material.side = THREE.BackSide
     // Apha
     material.transparent = true;
     material.alphaMap = doorAlphaTexture;
