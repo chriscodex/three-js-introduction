@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import colorImage from '/public/textures/door/color.jpg';
-import mapCap from '/public/class12/textures/matcaps/3.png';
+import colorImage from '/textures/door/color.jpg';
+import mapCap from '/class12/textures/matcaps/3.png';
+import gradientTxt from '/class12/textures/gradients/3.jpg';
 
 function Materials() {
   /* Textures */
@@ -11,21 +12,23 @@ function Materials() {
 
   const textureLoader = new THREE.TextureLoader(loadingManager);
 
-  const colorTexture = textureLoader.load('/public/textures/door/color.jpg');
-  const alphaTexture = textureLoader.load('/public/textures/door/alpha.jpg');
-  const heightTexture = textureLoader.load('/public/textures/door/height.jpg');
-  const normalTexture = textureLoader.load('/public/textures/door/normal.jpg');
-  const ambientOcclusionTexture = textureLoader.load(
-    '/public/textures/door/ambientOcclusion.jpg'
+  const doorColorTexture = textureLoader.load('/textures/door/color.jpg');
+  const doorAlphaTexture = textureLoader.load('/textures/door/alpha.jpg');
+  const doorHeightTexture = textureLoader.load('/textures/door/height.jpg');
+  const doorNormalTexture = textureLoader.load('/textures/door/normal.jpg');
+  const doorAmbientOcclusionTexture = textureLoader.load(
+    '/textures/door/ambientOcclusion.jpg'
   );
-  const metalnessTexture = textureLoader.load(
-    '/public/textures/door/alpha.jpg'
+  const doorMetalnessTexture = textureLoader.load(
+    '/textures/door/alpha.jpg'
   );
-  const roughnessTexture = textureLoader.load(
-    '/public/textures/door/alpha.jpg'
+  const doorRughnessTexture = textureLoader.load(
+    '/textures/door/alpha.jpg'
   );
 
-  const matcap = textureLoader.load(mapCap);
+  const matcapTexture = textureLoader.load(mapCap);
+
+  const gradiantTexture = textureLoader.load(gradientTxt);
 
   // Canvas
   const canvasRef = useRef(null);
@@ -35,7 +38,9 @@ function Materials() {
     const scene = new THREE.Scene();
 
     // Material
-    const material = new THREE.MeshBasicMaterial({ map: matcap });
+    const material = new THREE.MeshBasicMaterial();
+    material.map = doorColorTexture
+    material.color = new THREE.Color(0x00ff00)
     
     // Sphere
     const sphere = new THREE.Mesh(
@@ -124,9 +129,6 @@ function Materials() {
     // Controls
     const controls = new OrbitControls(camera, canvasRef.current);
     controls.enableDamping = true;
-    // controls.target.y = 1;
-    // controls.target.x = 1;
-    // controls.update();
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({
@@ -136,9 +138,21 @@ function Materials() {
     renderer.setPixelRatio(window.devicePixelRatio);
 
     /* Animations */
+    const clock = new THREE.Clock()
+
     const tick = () => {
+      const elapsedTime = clock.getElapsedTime()
+      
       // Control update for damping
       controls.update();
+      
+      // Update rotation objects
+      sphere.rotation.y = elapsedTime * 0.1
+      sphere.rotation.x = elapsedTime * 0.15
+      plane.rotation.y = elapsedTime * 0.1
+      plane.rotation.x = elapsedTime * 0.15
+      torus.rotation.y = elapsedTime * 0.1
+      torus.rotation.x = elapsedTime * 0.15
 
       // Rendering every tick
       renderer.render(scene, camera);
