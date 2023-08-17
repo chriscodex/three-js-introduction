@@ -29,6 +29,15 @@ function Text3D() {
       bevelOffset: 0,
       bevelSegments: 4,
     });
+
+    // Centrar el texto 3D
+    // textGeometry.computeBoundingBox();
+    // textGeometry.translate(
+    //   - (textGeometry.boundingBox.max.x - 0.02) / 2,
+    //   - (textGeometry.boundingBox.max.y - 0.02) / 2,
+    //   - (textGeometry.boundingBox.max.z - 0.03) / 2,
+    // )
+    textGeometry.center();
   });
 
   // Canvas
