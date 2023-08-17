@@ -38,6 +38,17 @@ function Text3D() {
     //   - (textGeometry.boundingBox.max.z - 0.03) / 2,
     // )
     textGeometry.center();
+
+    // console.log(textGeometry.boundingBox);
+
+    const material = new THREE.MeshMatcapMaterial();
+    material.matcap = matcapTexture;
+    // material.wireframe = true;
+    // material.color = new THREE.Color(0x00ff00);
+
+    const text = new THREE.Mesh(textGeometry, material);
+
+    scene.add(text);
   });
 
   // Canvas
