@@ -15,12 +15,15 @@ import { Textures } from './components/Textures/Textures';
 import { MeshBasicMaterial } from './components/Materials/MeshBasicMaterial';
 import { MeshNormalMaterial } from './components/Materials/MeshNormalMaterial';
 import { MeshMatcapMaterial } from './components/Materials/MeshMatcapMaterial';
+import { MeshDepthMaterial } from './components/Materials/MeshDepthMaterial';
+import { MeshLambartMaterial } from './components/Materials/MeshLambartMaterial';
+import { MeshPhongMaterial } from './components/Materials/MeshPhongMaterial';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <MeshMatcapMaterial />
+      <MeshPhongMaterial />
     </div>
   );
 }
