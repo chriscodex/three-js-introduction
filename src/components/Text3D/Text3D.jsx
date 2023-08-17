@@ -3,10 +3,8 @@ import * as THREE from 'three';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as dat from 'dat.gui';
 
 function Text3D() {
-  const gui = new dat.GUI();
 
   /* Textures */
   // Loading manager
