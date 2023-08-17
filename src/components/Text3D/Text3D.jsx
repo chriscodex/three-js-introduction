@@ -13,6 +13,12 @@ function Text3D() {
   const loadingManager = new THREE.LoadingManager();
 
   const textureLoader = new THREE.TextureLoader(loadingManager);
+  const matcapTexture = textureLoader.load('/class12/textures/matcaps/3.png');
+
+  const fontLoader = new FontLoader();
+
+  fontLoader.load('/fonts/helvetiker_regular.typeface.json', (font) => {
+  });
 
   // Canvas
   const canvasRef = useRef(null);
