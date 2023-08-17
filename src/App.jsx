@@ -14,12 +14,13 @@ import { DatGUI } from './components/DebugUI/DatGUI';
 import { Textures } from './components/Textures/Textures';
 import { MeshBasicMaterial } from './components/Materials/MeshBasicMaterial';
 import { MeshNormalMaterial } from './components/Materials/MeshNormalMaterial';
+import { MeshMatcapMaterial } from './components/Materials/MeshMatcapMaterial';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <MeshNormalMaterial />
+      <MeshMatcapMaterial />
     </div>
   );
 }
