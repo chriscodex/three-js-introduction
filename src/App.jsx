@@ -10,7 +10,7 @@ import { Orbit } from './components/Cameras/Orbit';
 import { Fullscreen } from './components/Fullscreen/Fullscreen';
 import { BufferGeometry } from './components/Geometries/BufferGeometry';
 import { BufferGeometryMultiples } from './components/Geometries/BufferGeometryMultiples';
-import { DatGUI } from './components/DebugUI/DatGUI';
+// import { DatGUI } from './components/DebugUI/DatGUI';
 import { Textures } from './components/Textures/Textures';
 import { MeshBasicMaterial } from './components/Materials/MeshBasicMaterial';
 import { MeshNormalMaterial } from './components/Materials/MeshNormalMaterial';
@@ -18,12 +18,15 @@ import { MeshMatcapMaterial } from './components/Materials/MeshMatcapMaterial';
 import { MeshDepthMaterial } from './components/Materials/MeshDepthMaterial';
 import { MeshLambartMaterial } from './components/Materials/MeshLambartMaterial';
 import { MeshPhongMaterial } from './components/Materials/MeshPhongMaterial';
+import { MeshToonMaterial } from './components/Materials/MeshToonMaterial';
+import { MeshStandarMaterial } from './components/Materials/MeshStandarMaterial';
+import { EnvironmentMap } from './components/Materials/EnvironmentMap';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <MeshPhongMaterial />
+      <EnvironmentMap />
     </div>
   );
 }
