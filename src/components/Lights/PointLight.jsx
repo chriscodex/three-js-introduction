@@ -22,6 +22,7 @@ function PointLight() {
   pointLight.intensity = 2;
 
   scene.add(pointLight);
+  gui.add(pointLight, 'intensity').min(1).max(100).setValue(0.01);
 
   const pointLightHelper = new THREE.PointLightHelper(pointLight, 1);
   scene.add(pointLightHelper);
