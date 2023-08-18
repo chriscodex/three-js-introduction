@@ -72,6 +72,8 @@ function ShadowsSpotlight() {
 
   spotlight.castShadow = true;
   spotlight.shadow.camera.fov = 30;
+  spotlight.shadow.camera.near = 0.1;
+  spotlight.shadow.camera.far = 6;
 
   spotlight.position.set(0, 2, 2);
   scene.add(spotlight);
