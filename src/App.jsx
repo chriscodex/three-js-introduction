@@ -25,12 +25,13 @@ import { Text3D } from './components/Text3D/Text3D';
 import { AmbientLights } from './components/Lights/AmbientLights';
 import { DirectionalLights } from './components/Lights/DirectionalLights';
 import { Hemisphere } from './components/Lights/Hemisphere';
+import { PointLight } from './components/Lights/PointLight';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <Hemisphere />
+      <PointLight />
     </div>
   );
 }
