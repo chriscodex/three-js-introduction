@@ -17,8 +17,8 @@ function PointLight() {
   const scene = new THREE.Scene();
 
   /* Lights */
-  const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-  pointLight.position.set(0, 4, 1.5);
+  const pointLight = new THREE.PointLight(0xff9000, 1, 100, 2);
+  pointLight.position.set(0, 0.5, 1.5);
   pointLight.intensity = 2;
 
   scene.add(pointLight);
