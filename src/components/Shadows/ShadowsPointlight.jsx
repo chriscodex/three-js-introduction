@@ -73,6 +73,10 @@ function ShadowsPointlight() {
   pointLight.castShadow = true;
 
   pointLight.position.set(0, 2, 2);
+  pointLight.shadow.mapSize.width = 1024;
+  pointLight.shadow.mapSize.height = 1024;
+  pointLight.shadow.camera.near = 0.1;
+  pointLight.shadow.camera.far = 5;
   scene.add(pointLight);
   // scene.add(pointLight.target);
 
@@ -80,8 +84,10 @@ function ShadowsPointlight() {
   const pointLightHelper = new THREE.PointLightHelper(pointLight);
   scene.add(pointLightHelper);
 
-  // const spotlightCameraHelper = new THREE.CameraHelper(spotlight.shadow.camera);
-  // scene.add(spotlightCameraHelper);
+  const pointlightCameraHelper = new THREE.CameraHelper(
+    pointLight.shadow.camera
+  );
+  scene.add(pointlightCameraHelper);
 
   // Camera
   const camera = new THREE.PerspectiveCamera(
