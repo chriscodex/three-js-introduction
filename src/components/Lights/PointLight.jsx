@@ -18,7 +18,7 @@ function PointLight() {
 
   /* Lights */
   const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-  pointLight.position.set(0, 0.5, 1.5);
+  pointLight.position.set(0, 4, 1.5);
   pointLight.intensity = 2;
 
   scene.add(pointLight);
@@ -102,6 +102,13 @@ function PointLight() {
 
     const tick = () => {
       const elapsedTime = clock.getElapsedTime();
+
+      cube.rotation.y = elapsedTime * 0.1;
+      cube.rotation.x = elapsedTime * 0.15;
+      sphere.rotation.y = elapsedTime * 0.1;
+      sphere.rotation.x = elapsedTime * 0.15;
+      torus.rotation.y = elapsedTime * 0.1;
+      torus.rotation.x = elapsedTime * 0.15;
 
       // Control update for damping
       controls.update();
