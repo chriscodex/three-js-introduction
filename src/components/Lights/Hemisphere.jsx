@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import * as dat from 'dat.gui';
 
-function DirectionalLights() {
+function Hemisphere() {
   const gui = new dat.GUI({ width: 400 });
 
   /* Textures */
@@ -17,16 +17,14 @@ function DirectionalLights() {
   const scene = new THREE.Scene();
 
   /* Lights */
-  // Directional Light
-  const directionalLight = new THREE.DirectionalLight();
-  // directionalLight.color = new THREE.Color(0xffffff);
-  directionalLight.position.set(1, 0.5, 0);
-  directionalLight.intensity = 1;
+  const hemisphereLight = new THREE.HemisphereLight(0xff0000, 0x0000ff, 0.5);
+  // hemisphereLight.position.set(1, 0.5, 0);
+  hemisphereLight.intensity = 1;
 
-  scene.add(directionalLight);
-  gui.add(directionalLight, 'intensity').min(0.5).max(1).setValue(0.01);
+  scene.add(hemisphereLight);
+  // gui.add(hemisphereLight, 'intensity').min(0).max(1).setValue(0.01);
 
-  const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 5);
+  const directionalLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 5);
   scene.add(directionalLightHelper);
 
   // Sizes
@@ -124,4 +122,4 @@ function DirectionalLights() {
   );
 }
 
-export { DirectionalLights };
+export { Hemisphere }

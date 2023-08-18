@@ -21,12 +21,16 @@ import { MeshPhongMaterial } from './components/Materials/MeshPhongMaterial';
 import { MeshToonMaterial } from './components/Materials/MeshToonMaterial';
 import { MeshStandarMaterial } from './components/Materials/MeshStandarMaterial';
 import { EnvironmentMap } from './components/Materials/EnvironmentMap';
+import { Text3D } from './components/Text3D/Text3D';
+import { AmbientLights } from './components/Lights/AmbientLights';
+import { DirectionalLights } from './components/Lights/DirectionalLights';
+import { Hemisphere } from './components/Lights/Hemisphere';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <EnvironmentMap />
+      <Hemisphere />
     </div>
   );
 }
