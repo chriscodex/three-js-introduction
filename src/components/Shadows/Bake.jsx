@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
 
 function Bake() {
   /* Textures */
   // Loading manager
   const loadingManager = new THREE.LoadingManager();
+  const textureLoader = new THREE.TextureLoader(loadingManager);
+  const bakedShadow = textureLoader.load('/textures/shadows/bakedShadow.jpg');
 
   // Canvas
   const canvasRef = useRef(null);
@@ -32,57 +33,32 @@ function Bake() {
     new THREE.SphereGeometry(0.5, 32, 32),
     material
   );
-  sphere.position.x = -1.5;
-  sphere.castShadow = true;
 
-  const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(0.75, 0.75, 0.75),
-    material
+  const plane = new THREE.Mesh(
+    new THREE.PlaneGeometry(5, 5),
+    new THREE.MeshBasicMaterial({ map: bakedShadow })
   );
-  cube.castShadow = true;
-
-  const torus = new THREE.Mesh(
-    new THREE.TorusGeometry(0.3, 0.2, 32, 64),
-    material
-  );
-  torus.position.x = 1.5;
-  torus.castShadow = true;
-
-  const plane = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), material);
   plane.rotation.x = -Math.PI * 0.5;
   plane.position.y = -0.65;
-  plane.receiveShadow = true;
 
-  scene.add(sphere, cube, torus, plane);
+  scene.add(sphere, plane);
 
   /* Lights */
   // Ambient light
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   ambientLight.intensity = 2;
-  // scene.add(ambientLight);
+  scene.add(ambientLight);
   // gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001);
 
   // PointLight
-  const pointLight = new THREE.PointLight(0xffffff, 5);
+  const pointLight = new THREE.PointLight(0xffffff, 3);
 
-  pointLight.castShadow = true;
-
-  pointLight.position.set(0, 2, 2);
-  pointLight.shadow.mapSize.width = 1024;
-  pointLight.shadow.mapSize.height = 1024;
-  pointLight.shadow.camera.near = 0.1;
-  pointLight.shadow.camera.far = 5;
+  pointLight.position.set(2, 2, 2);
   scene.add(pointLight);
-  // scene.add(pointLight.target);
 
   // Spotlight helper
   const pointLightHelper = new THREE.PointLightHelper(pointLight);
   scene.add(pointLightHelper);
-
-  const pointlightCameraHelper = new THREE.CameraHelper(
-    pointLight.shadow.camera
-  );
-  scene.add(pointlightCameraHelper);
 
   // Camera
   const camera = new THREE.PerspectiveCamera(
@@ -121,23 +97,11 @@ function Bake() {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(window.devicePixelRatio);
 
-    // Types of render shadows
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-    renderer.shadowMap.enabled = true;
-
     /* Animations */
     const clock = new THREE.Clock();
 
     const tick = () => {
       const elapsedTime = clock.getElapsedTime();
-
-      cube.rotation.y = elapsedTime * 0.1;
-      cube.rotation.x = elapsedTime * 0.15;
-      sphere.rotation.y = elapsedTime * 0.1;
-      sphere.rotation.x = elapsedTime * 0.15;
-      torus.rotation.y = elapsedTime * 0.1;
-      torus.rotation.x = elapsedTime * 0.15;
 
       // Control update for damping
       controls.update();
