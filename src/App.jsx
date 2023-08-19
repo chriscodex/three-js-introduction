@@ -26,12 +26,13 @@ import { AmbientLights } from './components/Lights/AmbientLights';
 import { DirectionalLights } from './components/Lights/DirectionalLights';
 import { Hemisphere } from './components/Lights/Hemisphere';
 import { PointLight } from './components/Lights/PointLight';
+import { RectLight } from './components/Lights/RectLight';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <PointLight />
+      <RectLight />
     </div>
   );
 }
