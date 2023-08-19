@@ -17,6 +17,10 @@ function RectLight() {
   // Scene - Like the scenario
   const scene = new THREE.Scene();
 
+  // Axis Helper
+  const axisHelper = new THREE.AxesHelper()
+  scene.add(axisHelper);
+
   // Sizes
   const sizes = {
     width: window.innerWidth,
