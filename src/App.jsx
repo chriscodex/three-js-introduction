@@ -32,12 +32,13 @@ import { ShadowsDirectional } from './components/Shadows/ShadowsDirectional';
 import { ShadowsSpotlight } from './components/Shadows/ShadowsSpotlight';
 import { ShadowsPointlight } from './components/Shadows/ShadowsPointlight';
 import { Bake } from './components/Shadows/Bake';
+import { BakeDinamic } from './components/Shadows/BakeDinamic';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <Bake />
+      <BakeDinamic />
     </div>
   );
 }
