@@ -7,7 +7,9 @@ function BakeDinamic() {
   // Loading manager
   const loadingManager = new THREE.LoadingManager();
   const textureLoader = new THREE.TextureLoader(loadingManager);
+
   const bakedShadow = textureLoader.load('/textures/shadows/bakedShadow.jpg');
+  const simpleShadow = textureLoader.load('/textures/shadows/simpleShadow.jpg');
 
   // Canvas
   const canvasRef = useRef(null);
@@ -34,10 +36,7 @@ function BakeDinamic() {
     material
   );
 
-  const plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(5, 5),
-    new THREE.MeshBasicMaterial({ map: bakedShadow })
-  );
+  const plane = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), material);
   plane.rotation.x = -Math.PI * 0.5;
   plane.position.y = -0.65;
 
@@ -48,7 +47,6 @@ function BakeDinamic() {
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   ambientLight.intensity = 2;
   scene.add(ambientLight);
-  // gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001);
 
   // PointLight
   const pointLight = new THREE.PointLight(0xffffff, 3);
@@ -59,6 +57,18 @@ function BakeDinamic() {
   // Spotlight helper
   const pointLightHelper = new THREE.PointLightHelper(pointLight);
   scene.add(pointLightHelper);
+
+  const sphereShadow = new THREE.Mesh(
+    new THREE.PlaneGeometry(1.5, 1.5),
+    new THREE.MeshBasicMaterial({
+      color: 0x000000,
+      transparent: true,
+      alphaMap: simpleShadow,
+    })
+  );
+  sphereShadow.rotation.x = -Math.PI / 2;
+  sphereShadow.position.y = plane.position.y + 0.01;
+  scene.add(sphereShadow);
 
   // Camera
   const camera = new THREE.PerspectiveCamera(
@@ -102,6 +112,9 @@ function BakeDinamic() {
 
     const tick = () => {
       const elapsedTime = clock.getElapsedTime();
+
+      // Update the sphere
+      
 
       // Control update for damping
       controls.update();
