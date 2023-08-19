@@ -29,12 +29,13 @@ import { PointLight } from './components/Lights/PointLight';
 import { RectLight } from './components/Lights/RectLight';
 import { Spotligh } from './components/Lights/Spotligh';
 import { ShadowsDirectional } from './components/Shadows/ShadowsDirectional';
+import { ShadowsSpotlight } from './components/Shadows/ShadowsSpotlight';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <ShadowsDirectional />
+      <ShadowsSpotlight />
     </div>
   );
 }
