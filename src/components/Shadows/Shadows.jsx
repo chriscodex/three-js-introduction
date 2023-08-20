@@ -76,6 +76,14 @@ function Shadows() {
   directionalLight.shadow.mapSize.width = 1024 ;
   directionalLight.shadow.mapSize.height = 1024;
 
+  directionalLight.shadow.camera.near = 0;
+  directionalLight.shadow.camera.far = 8;
+  // directionalLight.shadow.camera.top = 2;
+  // directionalLight.shadow.camera.right = 2;
+  // directionalLight.shadow.camera.bottom = -2;
+  // directionalLight.shadow.camera.left = -2;
+  directionalLight.shadow.radius = 10;
+
   scene.add(directionalLight)
 
   gui.add(directionalLight, 'intensity').min(0).max(1).step(0.001);
@@ -88,6 +96,9 @@ function Shadows() {
     1
   );
   scene.add(directionalLightHelper);
+
+  const directionalLightCameraHelper = new THREE.CameraHelper(directionalLight.shadow.camera)
+  scene.add(directionalLightCameraHelper)
 
   // Camera
   const camera = new THREE.PerspectiveCamera(
@@ -125,6 +136,9 @@ function Shadows() {
     });
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Types of render shadows
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     renderer.shadowMap.enabled = true;
 
