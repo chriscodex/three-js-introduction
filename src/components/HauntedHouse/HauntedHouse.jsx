@@ -41,14 +41,20 @@ function HauntedHouse() {
 
   // Walls
   const walls = new THREE.Mesh(
-    new THREE.BoxGeometry(4, 2, 4),
+    new THREE.BoxGeometry(4, 2.5, 4),
     new THREE.MeshBasicMaterial({ color: '#ac8e82' })
   );
-  walls.position.y = 2 / 2;
+  walls.position.y = 2.5 / 2;
   house.add(walls);
 
   // Roof
-  // const roof = new THREE.Mesh(new THREE.ConeGeometry())
+  const roof = new THREE.Mesh(
+    new THREE.ConeGeometry(3.5, 1, 4),
+    new THREE.MeshBasicMaterial({ color: '#b35f45' })
+  );
+  roof.position.y = 2.5 + 1 / 2;
+  roof.rotation.y = Math.PI / 4;
+  house.add(roof);
 
   /* Lights */
   // Ambient light
