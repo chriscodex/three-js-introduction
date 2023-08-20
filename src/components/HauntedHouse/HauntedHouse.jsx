@@ -26,21 +26,29 @@ function HauntedHouse() {
     height: window.innerHeight,
   };
 
-  // Temporary sphere
-  const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(1, 32, 32),
-    new THREE.MeshStandardMaterial({ roughness: 0.7 })
-  );
-
   // Floor
   const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(20, 20),
     new THREE.MeshStandardMaterial({ color: '#a9c388' })
   );
   floor.rotation.x = -Math.PI * 0.5;
-  floor.position.y = -1;
+  floor.position.y = 0;
 
-  scene.add(sphere, floor);
+  scene.add(floor);
+
+  const house = new THREE.Group();
+  scene.add(house);
+
+  // Walls
+  const walls = new THREE.Mesh(
+    new THREE.BoxGeometry(4, 2, 4),
+    new THREE.MeshBasicMaterial({ color: '#ac8e82' })
+  );
+  walls.position.y = 2 / 2;
+  house.add(walls);
+
+  // Roof
+  // const roof = new THREE.Mesh(new THREE.ConeGeometry())
 
   /* Lights */
   // Ambient light
