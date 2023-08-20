@@ -33,12 +33,13 @@ import { ShadowsSpotlight } from './components/Shadows/ShadowsSpotlight';
 import { ShadowsPointlight } from './components/Shadows/ShadowsPointlight';
 import { Bake } from './components/Shadows/Bake';
 import { BakeDinamic } from './components/Shadows/BakeDinamic';
+import { HauntedHouse } from './components/HauntedHouse/HauntedHouse';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <BakeDinamic />
+      <HauntedHouse />
     </div>
   );
 }
