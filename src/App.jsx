@@ -28,13 +28,13 @@ import { Hemisphere } from './components/Lights/Hemisphere';
 import { PointLight } from './components/Lights/PointLight';
 import { RectLight } from './components/Lights/RectLight';
 import { Spotligh } from './components/Lights/Spotligh';
-import { Shadows } from './components/Shadows/Shadows';
+import { ShadowsDirectional } from './components/Shadows/ShadowsDirectional';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <Shadows />
+      <ShadowsDirectional />
     </div>
   );
 }

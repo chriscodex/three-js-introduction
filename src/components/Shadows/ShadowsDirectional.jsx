@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
 import * as dat from 'dat.gui';
 
-function Shadows() {
+function ShadowsDirectional() {
   const gui = new dat.GUI({ width: 400 });
 
   /* Textures */
@@ -174,4 +174,4 @@ function Shadows() {
   );
 }
 
-export { Shadows };
+export { ShadowsDirectional };
