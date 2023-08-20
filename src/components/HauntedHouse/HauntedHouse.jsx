@@ -56,6 +56,15 @@ function HauntedHouse() {
   roof.rotation.y = Math.PI / 4;
   house.add(roof);
 
+  // Door
+  const door = new THREE.Mesh(
+    new THREE.PlaneGeometry(2, 2),
+    new THREE.MeshStandardMaterial({ color: '#aa7b7b' })
+  );
+  door.position.z = 2 + 0.001;
+  door.position.y = 2 / 2;
+  house.add(door);
+
   /* Lights */
   // Ambient light
   const ambientLight = new THREE.AmbientLight('#ffffff', 0.5);
