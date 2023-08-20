@@ -42,7 +42,7 @@ function HauntedHouse() {
     new THREE.MeshStandardMaterial({ color: '#a9c388' })
   );
   floor.rotation.x = -Math.PI * 0.5;
-  floor.position.y = 0;
+  floor.position.y = -1;
 
   scene.add(sphere, floor);
 
@@ -61,6 +61,12 @@ function HauntedHouse() {
   gui.add(moonLight.position, 'z').min(-5).max(5).step(0.001);
   scene.add(moonLight);
 
+  const moonLightHelper = new THREE.DirectionalLightHelper(moonLight, 1);
+  scene.add(moonLightHelper);
+
+  // const moonLightCameraHelper = new THREE.CameraHelper(moonLight.shadow.camera);
+  // scene.add(moonLightCameraHelper);
+
   // Camera
   const camera = new THREE.PerspectiveCamera(
     75,
@@ -68,7 +74,8 @@ function HauntedHouse() {
     0.1,
     100
   );
-  camera.position.z = 3;
+  camera.position.z = 5;
+  camera.position.y = 5;
   scene.add(camera);
 
   useEffect(() => {
