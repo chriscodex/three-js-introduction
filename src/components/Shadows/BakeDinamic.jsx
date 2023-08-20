@@ -114,8 +114,9 @@ function BakeDinamic() {
       const elapsedTime = clock.getElapsedTime();
 
       // Update the sphere
-      sphere.position.x = Math.cos(elapsedTime) * 1.2
-      sphere.position.z = Math.sin(elapsedTime) * 1.2
+      sphere.position.x = Math.cos(elapsedTime) * 1.2;
+      sphere.position.z = Math.sin(elapsedTime) * 1.2;
+      sphere.position.y = Math.abs(Math.sin(elapsedTime * 1.5));
 
       // Control update for damping
       controls.update();
