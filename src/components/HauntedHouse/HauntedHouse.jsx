@@ -26,10 +26,6 @@ function HauntedHouse() {
     height: window.innerHeight,
   };
 
-  // Material
-  const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
-  material.roughness = 0.7;
-
   // Temporary sphere
   const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(1, 32, 32),
@@ -49,23 +45,20 @@ function HauntedHouse() {
   /* Lights */
   // Ambient light
   const ambientLight = new THREE.AmbientLight('#ffffff', 0.5);
-  gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001);
+  // gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001);
   scene.add(ambientLight);
 
   // Directional light
   const moonLight = new THREE.DirectionalLight('#ffffff', 0.5);
   moonLight.position.set(4, 5, -2);
-  gui.add(moonLight, 'intensity').min(0).max(1).step(0.001);
-  gui.add(moonLight.position, 'x').min(-5).max(5).step(0.001);
-  gui.add(moonLight.position, 'y').min(-5).max(5).step(0.001);
-  gui.add(moonLight.position, 'z').min(-5).max(5).step(0.001);
+  // gui.add(moonLight, 'intensity').min(0).max(1).step(0.001);
+  // gui.add(moonLight.position, 'x').min(-5).max(5).step(0.001);
+  // gui.add(moonLight.position, 'y').min(-5).max(5).step(0.001);
+  // gui.add(moonLight.position, 'z').min(-5).max(5).step(0.001);
   scene.add(moonLight);
 
   const moonLightHelper = new THREE.DirectionalLightHelper(moonLight, 1);
   scene.add(moonLightHelper);
-
-  // const moonLightCameraHelper = new THREE.CameraHelper(moonLight.shadow.camera);
-  // scene.add(moonLightCameraHelper);
 
   // Camera
   const camera = new THREE.PerspectiveCamera(
