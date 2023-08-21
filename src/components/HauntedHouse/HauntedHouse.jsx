@@ -45,6 +45,34 @@ function HauntedHouse() {
     '/16-hauntedHouse/bricks/roughness.jpg'
   );
 
+  const grassColorTexture = textureLoader.load(
+    '/16-hauntedHouse/grass/color.jpg'
+  );
+  const grassAmbientOclusionTexture = textureLoader.load(
+    '/16-hauntedHouse/grass/ambientOcclusion.jpg'
+  );
+  const grassNormalTexture = textureLoader.load(
+    '/16-hauntedHouse/grass/normal.jpg'
+  );
+  const grassRoughnessTexture = textureLoader.load(
+    '/16-hauntedHouse/grass/roughness.jpg'
+  );
+
+  grassColorTexture.repeat.set(8, 8);
+  grassAmbientOclusionTexture.repeat.set(8, 8);
+  grassNormalTexture.repeat.set(8, 8);
+  grassRoughnessTexture.repeat.set(8, 8);
+
+  grassColorTexture.wrapS = THREE.RepeatWrapping;
+  grassAmbientOclusionTexture.wrapS = THREE.RepeatWrapping;
+  grassNormalTexture.wrapS = THREE.RepeatWrapping;
+  grassRoughnessTexture.wrapS = THREE.RepeatWrapping;
+
+  grassColorTexture.wrapT = THREE.RepeatWrapping;
+  grassAmbientOclusionTexture.wrapT = THREE.RepeatWrapping;
+  grassNormalTexture.wrapT = THREE.RepeatWrapping;
+  grassRoughnessTexture.wrapT = THREE.RepeatWrapping;
+
   // Canvas
   const canvasRef = useRef(null);
 
@@ -68,7 +96,16 @@ function HauntedHouse() {
   // Floor
   const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(20, 20),
-    new THREE.MeshStandardMaterial({ color: '#a9c388' })
+    new THREE.MeshStandardMaterial({
+      map: grassColorTexture,
+      aoMap: grassAmbientOclusionTexture,
+      normalMap: grassNormalTexture,
+      roughnessMap: grassRoughnessTexture,
+    })
+  );
+  floor.geometry.setAttribute(
+    'uv2',
+    new THREE.Float32BufferAttribute(floor.geometry.attributes.uv.array, 2)
   );
   floor.rotation.x = -Math.PI * 0.5;
   floor.position.y = 0;
@@ -165,8 +202,16 @@ function HauntedHouse() {
     const grave = new THREE.Mesh(graveGeometry, graveMaterial);
     grave.position.set(x, 0.4, z);
     grave.rotation.y = (Math.random() - 0.5) * 0.4;
+    grave.castShadow = true;
     graves.add(grave);
   }
+
+  // Ghosts
+  const ghost1 = new THREE.PointLight('#ff00ff', 2, 3);
+  const ghost2 = new THREE.PointLight('#00ffff', 2, 3);
+  const ghost3 = new THREE.PointLight('#ffff00', 2, 3);
+
+  scene.add(ghost1, ghost2, ghost3);
 
   /* Lights */
   // Ambient light
@@ -232,12 +277,46 @@ function HauntedHouse() {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor('#262837');
+    renderer.shadowMap.enabled = true;
+
+    // Shadows
+    moonLight.castShadow = true;
+    doorLight.castShadow = true;
+    ghost1.castShadow = true;
+    ghost2.castShadow = true;
+    ghost3.castShadow = true;
+
+    walls.castShadow = true;
+    bush1.castShadow = true;
+    bush2.castShadow = true;
+    bush3.castShadow = true;
+    bush4.castShadow = true;
 
     /* Animations */
     const clock = new THREE.Clock();
 
     const tick = () => {
       const elapsedTime = clock.getElapsedTime();
+
+      // Update ghost
+      const ghost1Angle = elapsedTime * 0.5;
+      ghost1.position.x = Math.sin(ghost1Angle) * 4;
+      ghost1.position.z = Math.cos(ghost1Angle) * 4;
+      ghost1.position.y = Math.sin(ghost1Angle * 3);
+
+      const ghost2Angle = -elapsedTime * 0.5;
+      ghost2.position.x = Math.sin(ghost2Angle) * 4;
+      ghost2.position.z = Math.cos(ghost2Angle) * 4;
+      ghost2.position.y =
+        Math.sin(ghost2Angle * 4) + Math.sin(ghost2Angle * 2.5);
+
+      const ghost3Angle = -elapsedTime * 0.6;
+      ghost3.position.x =
+        Math.sin(ghost3Angle) * (7 + Math.sin(elapsedTime * 0.32));
+      ghost3.position.z =
+        Math.cos(ghost3Angle) * (7 + Math.sin(elapsedTime * 0.5));
+      ghost3.position.y =
+        Math.sin(ghost3Angle * 4) + Math.sin(ghost3Angle * 2.5);
 
       // Control update for damping
       controls.update();
