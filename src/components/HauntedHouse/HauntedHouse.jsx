@@ -10,6 +10,28 @@ function HauntedHouse() {
   const loadingManager = new THREE.LoadingManager();
   const textureLoader = new THREE.TextureLoader(loadingManager);
 
+  const doorColorTexture = textureLoader.load(
+    '/16-hauntedHouse/door/color.jpg'
+  );
+  const doorAlphaTexture = textureLoader.load(
+    '/16-hauntedHouse/door/alpha.jpg'
+  );
+  const doorAmbientOclusionTexture = textureLoader.load(
+    '/16-hauntedHouse/door/ambientOcclusion.jpg'
+  );
+  const doorHeightTexture = textureLoader.load(
+    '/16-hauntedHouse/door/height.jpg'
+  );
+  const doorNormalTexture = textureLoader.load(
+    '/16-hauntedHouse/door/normal.jpg'
+  );
+  const doorMatalnessTexture = textureLoader.load(
+    '/16-hauntedHouse/door/metalness.jpg'
+  );
+  const doorRoughnessTexture = textureLoader.load(
+    '/16-hauntedHouse/door/roughness.jpg'
+  );
+
   // Canvas
   const canvasRef = useRef(null);
 
@@ -62,8 +84,22 @@ function HauntedHouse() {
 
   // Door
   const door = new THREE.Mesh(
-    new THREE.PlaneGeometry(2, 2),
-    new THREE.MeshStandardMaterial({ color: '#aa7b7b' })
+    new THREE.PlaneGeometry(2.2, 2.2, 100, 100),
+    new THREE.MeshStandardMaterial({
+      map: doorColorTexture,
+      transparent: true,
+      alphaMap: doorAlphaTexture,
+      aoMap: doorAmbientOclusionTexture,
+      displacementMap: doorHeightTexture,
+      displacementScale: 0.1,
+      normalMap: doorNormalTexture,
+      metalnessMap: doorMatalnessTexture,
+      roughnessMap: doorRoughnessTexture,
+    })
+  );
+  door.geometry.setAttribute(
+    'uv2',
+    new THREE.Float32BufferAttribute(door.geometry.attributes.uv.array, 2)
   );
   door.position.z = 2 + 0.001;
   door.position.y = 2 / 2;
@@ -129,7 +165,7 @@ function HauntedHouse() {
   scene.add(moonLightHelper);
 
   // Door Light
-  const doorLight = new THREE.PointLight('#ff7d46', 1, 7);
+  const doorLight = new THREE.PointLight('#ff7d46', 2, 7);
   doorLight.position.set(0, 2.2, 2.7);
   house.add(doorLight);
 
