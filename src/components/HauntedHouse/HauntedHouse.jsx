@@ -32,6 +32,19 @@ function HauntedHouse() {
     '/16-hauntedHouse/door/roughness.jpg'
   );
 
+  const bricksColorTexture = textureLoader.load(
+    '/16-hauntedHouse/bricks/color.jpg'
+  );
+  const bricksAmbientOclusionTexture = textureLoader.load(
+    '/16-hauntedHouse/bricks/ambientOcclusion.jpg'
+  );
+  const bricksNormalTexture = textureLoader.load(
+    '/16-hauntedHouse/bricks/normal.jpg'
+  );
+  const bricksRoughnessTexture = textureLoader.load(
+    '/16-hauntedHouse/bricks/roughness.jpg'
+  );
+
   // Canvas
   const canvasRef = useRef(null);
 
