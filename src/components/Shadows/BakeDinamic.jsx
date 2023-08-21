@@ -121,7 +121,7 @@ function BakeDinamic() {
       // Update the shadow
       sphereShadow.position.x = sphere.position.x
       sphereShadow.position.z = sphere.position.z
-      // sphereShadow.position.x = sphere.position.x
+      sphereShadow.material.opacity = (1 - sphere.position.y) * 0.75
 
       // Control update for damping
       controls.update();
