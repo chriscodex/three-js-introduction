@@ -118,6 +118,11 @@ function BakeDinamic() {
       sphere.position.z = Math.sin(elapsedTime) * 1.2;
       sphere.position.y = Math.abs(Math.sin(elapsedTime * 1.5));
 
+      // Update the shadow
+      sphereShadow.position.x = sphere.position.x
+      sphereShadow.position.z = sphere.position.z
+      // sphereShadow.position.x = sphere.position.x
+
       // Control update for damping
       controls.update();
 
