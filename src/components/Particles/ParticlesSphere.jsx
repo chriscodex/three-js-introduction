@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import * as dat from 'dat.gui';
 
-function Particles() {
+function ParticlesSphere() {
   const gui = new dat.GUI({ width: 400 });
 
   /* Textures */
@@ -17,25 +17,10 @@ function Particles() {
   const scene = new THREE.Scene();
 
   // Particles
-  // Geometry
-  const particlesGeometry = new THREE.BufferGeometry();
-  const particleCount = 500;
-
-  const positions = new Float32Array(particleCount * 3);
-
-  for (let i = 0; i < particleCount * 3; i++) {
-    positions[i] =(Math.random() - 0.5) * 10;
-  }
-  particlesGeometry.setAttribute(
-    'position',
-    new THREE.BufferAttribute(positions, 3)
-  );
-
-  // Material
+  const particlesGeometry = new THREE.SphereGeometry(1, 32, 32);
   const particlesMaterial = new THREE.PointsMaterial();
   particlesMaterial.size = 0.01;
   particlesMaterial.sizeAttenuation = true;
-  particlesMaterial.color = new THREE.Color('#ffff00')
 
   // Particles points
   const particles = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -134,4 +119,4 @@ function Particles() {
   );
 }
 
-export { Particles };
+export { ParticlesSphere };
