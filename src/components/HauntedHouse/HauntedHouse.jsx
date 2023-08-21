@@ -20,6 +20,10 @@ function HauntedHouse() {
   const axisHelper = new THREE.AxesHelper();
   scene.add(axisHelper);
 
+  // Fog
+  const fog = new THREE.Fog('#262837', 0.5, 15);
+  scene.fog = fog;
+
   // Sizes
   const sizes = {
     width: window.innerWidth,
@@ -169,6 +173,7 @@ function HauntedHouse() {
     });
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor('#262837');
 
     /* Animations */
     const clock = new THREE.Clock();
