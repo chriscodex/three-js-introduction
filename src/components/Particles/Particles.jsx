@@ -10,7 +10,7 @@ function Particles() {
   // Loading manager
   const loadingManager = new THREE.LoadingManager();
   const textureLoader = new THREE.TextureLoader(loadingManager);
-  const particleTexture = textureLoader.load('/17-particles/11.png')
+  const particleTexture = textureLoader.load('/17-particles/2.png');
 
   // Canvas
   const canvasRef = useRef(null);
@@ -35,9 +35,12 @@ function Particles() {
 
   // Material
   const particlesMaterial = new THREE.PointsMaterial();
-  particlesMaterial.size = 0.01;
+  particlesMaterial.size = 0.2;
   particlesMaterial.sizeAttenuation = true;
   particlesMaterial.color = new THREE.Color('#ffff00');
+  particlesMaterial.map = particleTexture;
+  particlesMaterial.transparent = true;
+  particlesMaterial.alphaMap = particleTexture;
 
   // Particles points
   const particles = new THREE.Points(particlesGeometry, particlesMaterial);
