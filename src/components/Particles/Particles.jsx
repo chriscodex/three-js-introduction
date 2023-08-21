@@ -9,6 +9,8 @@ function Particles() {
   /* Textures */
   // Loading manager
   const loadingManager = new THREE.LoadingManager();
+  const textureLoader = new THREE.TextureLoader(loadingManager);
+  const particleTexture = textureLoader.load('/17-particles/11.png')
 
   // Canvas
   const canvasRef = useRef(null);
@@ -24,7 +26,7 @@ function Particles() {
   const positions = new Float32Array(particleCount * 3);
 
   for (let i = 0; i < particleCount * 3; i++) {
-    positions[i] =(Math.random() - 0.5) * 10;
+    positions[i] = (Math.random() - 0.5) * 10;
   }
   particlesGeometry.setAttribute(
     'position',
@@ -35,7 +37,7 @@ function Particles() {
   const particlesMaterial = new THREE.PointsMaterial();
   particlesMaterial.size = 0.01;
   particlesMaterial.sizeAttenuation = true;
-  particlesMaterial.color = new THREE.Color('#ffff00')
+  particlesMaterial.color = new THREE.Color('#ffff00');
 
   // Particles points
   const particles = new THREE.Points(particlesGeometry, particlesMaterial);
