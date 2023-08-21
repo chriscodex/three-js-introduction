@@ -81,7 +81,16 @@ function HauntedHouse() {
   // Walls
   const walls = new THREE.Mesh(
     new THREE.BoxGeometry(4, 2.5, 4),
-    new THREE.MeshStandardMaterial({ color: '#ac8e82' })
+    new THREE.MeshStandardMaterial({
+      map: bricksColorTexture,
+      aoMap: bricksAmbientOclusionTexture,
+      normalMap: bricksNormalTexture,
+      roughnessMap: bricksRoughnessTexture,
+    })
+  );
+  walls.geometry.setAttribute(
+    'uv2',
+    new THREE.Float32BufferAttribute(walls.geometry.attributes.uv.array, 2)
   );
   walls.position.y = 2.5 / 2;
   house.add(walls);
