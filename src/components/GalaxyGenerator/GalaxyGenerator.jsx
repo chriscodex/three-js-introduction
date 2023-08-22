@@ -20,15 +20,46 @@ function GalaxyGenerator() {
   /* Galaxy */
   const parameters = {};
   parameters.count = 1000;
-  const generateGalaxy = () => {};
+  parameters.size = 0.02;
+  
+
+  const generateGalaxy = () => {
+    // Geometry
+    const geometry = new THREE.BufferGeometry();
+
+    const positions = new Float32Array(parameters.count * 3);
+
+    for (let i = 0; i < parameters.count; i++) {
+      const i3 = i * 3;
+
+      positions[i3] = (Math.random() - 0.5) * 3;
+      positions[i3 + 1] = (Math.random() - 0.5) * 3;
+      positions[i3 + 2] = (Math.random() - 0.5) * 3;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    // Material
+    const material = new THREE.PointsMaterial({
+      size: parameters.size,
+      sizeAttenuation: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+
+    // Points
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+  };
 
   generateGalaxy();
+
+  gui.add(parameters, 'count').min(100).max(100000).step(100).onFinishChange(generateGalaxy);
+  gui.add(parameters, 'size').min(0.001).max(0.1).step(0.001).onFinishChange(generateGalaxy);
   /* Lights */
-  const ambientLight = new THREE.AmbientLight(); 
+  const ambientLight = new THREE.AmbientLight();
   ambientLight.color = new THREE.Color(0xffffff);
   ambientLight.intensity = 0.5;
-
-  gui.add(ambientLight, 'intensity').min(0).max(1).setValue(0.01);
   scene.add(ambientLight);
 
   const pointLight = new THREE.PointLight(0xffffff, 55);
