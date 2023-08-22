@@ -38,12 +38,13 @@ import { ParticlesSphere } from './components/Particles/ParticlesSphere';
 import { Particles } from './components/Particles/Particles';
 import { ParticlesColors } from './components/Particles/ParticlesColors';
 import { ParticlesWave } from './components/Particles/ParticlesWave';
+import { GalaxyGenerator } from './components/GalaxyGenerator/GalaxyGenerator';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <ParticlesWave />
+      <GalaxyGenerator />
     </div>
   );
 }
