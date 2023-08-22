@@ -22,11 +22,17 @@ function GalaxyGenerator() {
   parameters.count = 1000;
   parameters.size = 0.02;
 
-  let geometry = null;  
-  let material = null;  
-  let points = null;  
+  let geometry = null;
+  let material = null;
+  let points = null;
 
   const generateGalaxy = () => {
+    // Destroy old galaxy
+    if (points !== null) {
+      geometry.dispose();
+      material.dispose();
+      scene.remove(points);
+    }
     // Geometry
     geometry = new THREE.BufferGeometry();
 
@@ -57,8 +63,18 @@ function GalaxyGenerator() {
 
   generateGalaxy();
 
-  gui.add(parameters, 'count').min(100).max(100000).step(100).onFinishChange(generateGalaxy);
-  gui.add(parameters, 'size').min(0.001).max(0.1).step(0.001).onFinishChange(generateGalaxy);
+  gui
+    .add(parameters, 'count')
+    .min(100)
+    .max(100000)
+    .step(100)
+    .onFinishChange(generateGalaxy);
+  gui
+    .add(parameters, 'size')
+    .min(0.001)
+    .max(0.1)
+    .step(0.001)
+    .onFinishChange(generateGalaxy);
   /* Lights */
   const ambientLight = new THREE.AmbientLight();
   ambientLight.color = new THREE.Color(0xffffff);
