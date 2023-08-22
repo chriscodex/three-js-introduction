@@ -34,12 +34,13 @@ import { ShadowsPointlight } from './components/Shadows/ShadowsPointlight';
 import { Bake } from './components/Shadows/Bake';
 import { BakeDinamic } from './components/Shadows/BakeDinamic';
 import { HauntedHouse } from './components/HauntedHouse/HauntedHouse';
+import { Particles } from './components/Particles/Particles';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <HauntedHouse />
+      <Particles />
     </div>
   );
 }
