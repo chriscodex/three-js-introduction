@@ -42,9 +42,11 @@ function GalaxyGenerator() {
     for (let i = 0; i < parameters.count; i++) {
       const i3 = i * 3;
 
-      positions[i3] = (Math.random() - 0.5) * 3;
-      positions[i3 + 1] = (Math.random() - 0.5) * 3;
-      positions[i3 + 2] = (Math.random() - 0.5) * 3;
+      const radius = Math.random() * parameters.radius;
+
+      positions[i3] = radius;
+      positions[i3 + 1] = 0;
+      positions[i3 + 2] = 0;
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
