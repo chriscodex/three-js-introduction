@@ -37,12 +37,13 @@ import { HauntedHouse } from './components/HauntedHouse/HauntedHouse';
 import { ParticlesSphere } from './components/Particles/ParticlesSphere';
 import { Particles } from './components/Particles/Particles';
 import { ParticlesColors } from './components/Particles/ParticlesColors';
+import { ParticlesWave } from './components/Particles/ParticlesWave';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <ParticlesColors />
+      <ParticlesWave />
     </div>
   );
 }
