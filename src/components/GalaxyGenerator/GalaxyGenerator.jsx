@@ -21,6 +21,7 @@ function GalaxyGenerator() {
   const parameters = {};
   parameters.count = 1000;
   parameters.size = 0.02;
+  parameters.radius = 5;
 
   let geometry = null;
   let material = null;
@@ -74,6 +75,12 @@ function GalaxyGenerator() {
     .min(0.001)
     .max(0.1)
     .step(0.001)
+    .onFinishChange(generateGalaxy);
+  gui
+    .add(parameters, 'radius')
+    .min(0.01)
+    .max(20)
+    .step(0.01)
     .onFinishChange(generateGalaxy);
   /* Lights */
   const ambientLight = new THREE.AmbientLight();
