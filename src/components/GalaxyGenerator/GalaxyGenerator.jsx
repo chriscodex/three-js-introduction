@@ -21,11 +21,14 @@ function GalaxyGenerator() {
   const parameters = {};
   parameters.count = 1000;
   parameters.size = 0.02;
-  
+
+  let geometry = null;  
+  let material = null;  
+  let points = null;  
 
   const generateGalaxy = () => {
     // Geometry
-    const geometry = new THREE.BufferGeometry();
+    geometry = new THREE.BufferGeometry();
 
     const positions = new Float32Array(parameters.count * 3);
 
@@ -40,7 +43,7 @@ function GalaxyGenerator() {
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
     // Material
-    const material = new THREE.PointsMaterial({
+    material = new THREE.PointsMaterial({
       size: parameters.size,
       sizeAttenuation: true,
       depthWrite: false,
@@ -48,7 +51,7 @@ function GalaxyGenerator() {
     });
 
     // Points
-    const points = new THREE.Points(geometry, material);
+    points = new THREE.Points(geometry, material);
     scene.add(points);
   };
 
@@ -75,12 +78,12 @@ function GalaxyGenerator() {
   };
 
   // Material
-  const material = new THREE.MeshStandardMaterial();
-  material.roughness = 0.4;
+  const materialCube = new THREE.MeshStandardMaterial();
+  materialCube.roughness = 0.4;
 
   const cube = new THREE.Mesh(
     new THREE.BoxGeometry(0.75, 0.75, 0.75),
-    material
+    materialCube
   );
 
   scene.add(cube);
