@@ -42,7 +42,7 @@ import './App.css';
 function App() {
   return (
     <div>
-      <Particles />
+      <ParticlesColors />
     </div>
   );
 }

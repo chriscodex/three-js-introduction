@@ -28,17 +28,22 @@ function ParticlesColors() {
 
   for (let i = 0; i < particleCount * 3; i++) {
     particlesPositions[i] = (Math.random() - 0.5) * 10;
+    particlesColors[i] = Math.random();
   }
   particlesGeometry.setAttribute(
     'position',
     new THREE.BufferAttribute(particlesPositions, 3)
+  );
+  particlesGeometry.setAttribute(
+    'color',
+    new THREE.BufferAttribute(particlesColors, 3)
   );
 
   // Material
   const particlesMaterial = new THREE.PointsMaterial();
   particlesMaterial.size = 0.2;
   particlesMaterial.sizeAttenuation = true;
-  particlesMaterial.color = new THREE.Color('#ffff00');
+  // particlesMaterial.color = new THREE.Color('#ffff00');
   particlesMaterial.map = particleTexture;
   particlesMaterial.transparent = true;
   particlesMaterial.alphaMap = particleTexture;
@@ -46,6 +51,7 @@ function ParticlesColors() {
   // particlesMaterial.depthTest = false;
   particlesMaterial.depthWrite = false;
   particlesMaterial.blending = THREE.AdditiveBlending;
+  particlesMaterial.vertexColors = true;
 
   // Particles points
   const particles = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -144,4 +150,4 @@ function ParticlesColors() {
   );
 }
 
-export { ParticlesColors }
+export { ParticlesColors };
