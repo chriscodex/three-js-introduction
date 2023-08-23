@@ -23,14 +23,15 @@ function ParticlesColors() {
   const particlesGeometry = new THREE.BufferGeometry();
   const particleCount = 20000;
 
-  const positions = new Float32Array(particleCount * 3);
+  const particlesPositions = new Float32Array(particleCount * 3);
+  const particlesColors = new Float32Array(particleCount * 3);
 
   for (let i = 0; i < particleCount * 3; i++) {
-    positions[i] = (Math.random() - 0.5) * 10;
+    particlesPositions[i] = (Math.random() - 0.5) * 10;
   }
   particlesGeometry.setAttribute(
     'position',
-    new THREE.BufferAttribute(positions, 3)
+    new THREE.BufferAttribute(particlesPositions, 3)
   );
 
   // Material
