@@ -36,6 +36,7 @@ import { BakeDinamic } from './components/Shadows/BakeDinamic';
 import { HauntedHouse } from './components/HauntedHouse/HauntedHouse';
 import { ParticlesSphere } from './components/Particles/ParticlesSphere';
 import { Particles } from './components/Particles/Particles';
+import { ParticlesColors } from './components/Particles/ParticlesColors';
 import './App.css';
 
 function App() {
