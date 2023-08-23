@@ -131,6 +131,9 @@ function ParticlesColors() {
     const tick = () => {
       const elapsedTime = clock.getElapsedTime();
 
+      // Update particles
+      particles.rotation.y = elapsedTime * 0.05;
+
       // Control update for damping
       controls.update();
 
