@@ -21,7 +21,7 @@ function Particles() {
   // Particles
   // Geometry
   const particlesGeometry = new THREE.BufferGeometry();
-  const particleCount = 500;
+  const particleCount = 20000;
 
   const positions = new Float32Array(particleCount * 3);
 
@@ -41,6 +41,10 @@ function Particles() {
   particlesMaterial.map = particleTexture;
   particlesMaterial.transparent = true;
   particlesMaterial.alphaMap = particleTexture;
+  // particlesMaterial.alphaTest = 0.001;
+  // particlesMaterial.depthTest = false;
+  particlesMaterial.depthWrite = false;
+  particlesMaterial.blending = THREE.AdditiveBlending;
 
   // Particles points
   const particles = new THREE.Points(particlesGeometry, particlesMaterial);
