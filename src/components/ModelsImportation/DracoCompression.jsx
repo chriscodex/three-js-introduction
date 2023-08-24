@@ -16,10 +16,9 @@ function DracoCompression() {
 
   // Models
   const dracoLoader = new DRACOLoader();
-  
-  
-  const gltfLoader = new GLTFLoader(loadingManager);
-  // Way 1
+  dracoLoader.setDecoderPath('/21-class/draco/');
+
+  const gltfLoader = new GLTFLoader();
   gltfLoader.load('/21-class/models/Duck/glTF-Draco/Duck.gltf', (gltf) => {
     while (gltf.scene.children.length) {
       const children = [...gltf.scene.children];
@@ -29,10 +28,7 @@ function DracoCompression() {
     }
   });
 
-  // Way 2
-  // gltfLoader.load('/21-models/FlightHelmet/glTF/FlightHelmet.gltf', (gltf) => {
-  //   scene.add(gltf.scene);
-  // });
+  gltfLoader.setDRACOLoader(dracoLoader);
 
   /**
    * Floor
