@@ -15,9 +15,20 @@ function ModelImportationHelmet() {
 
   // Models
   const gltfLoader = new GLTFLoader(loadingManager);
-  gltfLoader.load('/21-models/Duck/glTF/Duck.gltf', (gltfModel) => {
-    scene.add(gltfModel.scene.children[0]);
+  // Way 1
+  gltfLoader.load('/21-models/FlightHelmet/glTF/FlightHelmet.gltf', (gltf) => {
+    while (gltf.scene.children.length) {
+      const children = [...gltf.scene.children];
+      children.forEach((child) => {
+        scene.add(child);
+      });
+    }
   });
+
+  // Way 2
+  // gltfLoader.load('/21-models/FlightHelmet/glTF/FlightHelmet.gltf', (gltf) => {
+  //   scene.add(gltf.scene);
+  // });
 
   /**
    * Floor
@@ -119,4 +130,4 @@ function ModelImportationHelmet() {
   );
 }
 
-export { ModelImportationHelmet }
+export { ModelImportationHelmet };
