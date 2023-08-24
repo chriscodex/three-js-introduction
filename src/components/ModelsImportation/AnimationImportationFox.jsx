@@ -20,6 +20,7 @@ function AnimationImportationFox() {
 
   const gltfLoader = new GLTFLoader();
   gltfLoader.load('/21-class/models/Fox/glTF/Fox.gltf', (gltf) => {
+    gltf.scene.scale.set(0.025, 0.025, 0.025);
     scene.add(gltf.scene);
   });
 
