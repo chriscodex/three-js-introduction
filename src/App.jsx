@@ -44,12 +44,13 @@ import { RaycasterMouse } from './components/Raycaster/RaycasterMouse';
 import { ModelsImportationDuck } from './components/ModelsImportation/ModelsImportationDuck';
 import { ModelImportationHelmet } from './components/ModelsImportation/ModelImportationHelmet';
 import { DracoCompression } from './components/ModelsImportation/DracoCompression';
+import { AnimationImportationFox } from './components/ModelsImportation/AnimationImportationFox';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <DracoCompression />
+      <AnimationImportationFox />
     </div>
   );
 }

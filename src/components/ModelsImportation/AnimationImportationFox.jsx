@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
-function DracoCompression() {
+function AnimationImportationFox() {
   // Loading manager
   const loadingManager = new THREE.LoadingManager();
 
@@ -130,4 +130,4 @@ function DracoCompression() {
   );
 }
 
-export { DracoCompression };
+export { AnimationImportationFox }
