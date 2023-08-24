@@ -41,13 +41,15 @@ import { ParticlesWave } from './components/Particles/ParticlesWave';
 import { GalaxyGenerator } from './components/GalaxyGenerator/GalaxyGenerator';
 import { Raycaster } from './components/Raycaster/Raycaster';
 import { RaycasterMouse } from './components/Raycaster/RaycasterMouse';
-import { ModelsImportation } from './components/ModelsImportation/ModelsImportation';
+import { ModelsImportationDuck } from './components/ModelsImportation/ModelsImportationDuck';
+import { ModelImportationHelmet } from './components/ModelsImportation/ModelImportationHelmet';
+import { DracoCompression } from './components/ModelsImportation/DracoCompression';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <ModelsImportation />
+      <DracoCompression />
     </div>
   );
 }

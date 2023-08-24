@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-function ModelsImportation() {
+function DracoCompression() {
   // Loading manager
   const loadingManager = new THREE.LoadingManager();
 
@@ -15,9 +15,20 @@ function ModelsImportation() {
 
   // Models
   const gltfLoader = new GLTFLoader(loadingManager);
-  gltfLoader.load('/21-models/Duck/glTF/Duck.gltf', (gltfModel) => {
-    scene.add(gltfModel.scene.children[0]);
+  // Way 1
+  gltfLoader.load('/21-models/FlightHelmet/glTF/FlightHelmet.gltf', (gltf) => {
+    while (gltf.scene.children.length) {
+      const children = [...gltf.scene.children];
+      children.forEach((child) => {
+        scene.add(child);
+      });
+    }
   });
+
+  // Way 2
+  // gltfLoader.load('/21-models/FlightHelmet/glTF/FlightHelmet.gltf', (gltf) => {
+  //   scene.add(gltf.scene);
+  // });
 
   /**
    * Floor
@@ -119,4 +130,4 @@ function ModelsImportation() {
   );
 }
 
-export { ModelsImportation };
+export { DracoCompression }
