@@ -19,13 +19,8 @@ function AnimationImportationFox() {
   dracoLoader.setDecoderPath('/21-class/draco/');
 
   const gltfLoader = new GLTFLoader();
-  gltfLoader.load('/21-class/models/Duck/glTF-Draco/Duck.gltf', (gltf) => {
-    while (gltf.scene.children.length) {
-      const children = [...gltf.scene.children];
-      children.forEach((child) => {
-        scene.add(child);
-      });
-    }
+  gltfLoader.load('/21-class/models/Fox/glTF/Fox.gltf', (gltf) => {
+    scene.add(gltf.scene);
   });
 
   gltfLoader.setDRACOLoader(dracoLoader);
@@ -130,4 +125,4 @@ function AnimationImportationFox() {
   );
 }
 
-export { AnimationImportationFox }
+export { AnimationImportationFox };
