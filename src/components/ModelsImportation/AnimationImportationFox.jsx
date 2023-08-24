@@ -18,8 +18,14 @@ function AnimationImportationFox() {
   const dracoLoader = new DRACOLoader();
   dracoLoader.setDecoderPath('/21-class/draco/');
 
+  let mixer = null;
+
   const gltfLoader = new GLTFLoader();
   gltfLoader.load('/21-class/models/Fox/glTF/Fox.gltf', (gltf) => {
+    mixer = new THREE.AnimationMixer(gltf.scene);
+    const action = mixer.clipAction(gltf.animations[2]);
+    action.play();
+
     gltf.scene.scale.set(0.025, 0.025, 0.025);
     scene.add(gltf.scene);
   });
@@ -104,8 +110,14 @@ function AnimationImportationFox() {
     /* Animations */
     const clock = new THREE.Clock();
 
+    let previusTime = 0;
     const tick = () => {
       const elapsedTime = clock.getElapsedTime();
+      const deltaTime = elapsedTime - previusTime;
+      previusTime = elapsedTime;
+
+      // Update Mixer
+      if (mixer !== null) mixer.update(deltaTime);
 
       // Control update for damping
       controls.update();
