@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 function DracoCompression() {
   // Loading manager
@@ -14,9 +15,12 @@ function DracoCompression() {
   const scene = new THREE.Scene();
 
   // Models
+  const dracoLoader = new DRACOLoader();
+  
+  
   const gltfLoader = new GLTFLoader(loadingManager);
   // Way 1
-  gltfLoader.load('/21-models/FlightHelmet/glTF/FlightHelmet.gltf', (gltf) => {
+  gltfLoader.load('/21-class/models/Duck/glTF-Draco/Duck.gltf', (gltf) => {
     while (gltf.scene.children.length) {
       const children = [...gltf.scene.children];
       children.forEach((child) => {
@@ -130,4 +134,4 @@ function DracoCompression() {
   );
 }
 
-export { DracoCompression }
+export { DracoCompression };

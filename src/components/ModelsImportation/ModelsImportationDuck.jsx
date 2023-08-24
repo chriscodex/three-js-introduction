@@ -15,7 +15,7 @@ function ModelsImportationDuck() {
 
   // Models
   const gltfLoader = new GLTFLoader(loadingManager);
-  gltfLoader.load('/21-models/Duck/glTF/Duck.gltf', (gltfModel) => {
+  gltfLoader.load('/21-class/models/Duck/glTF/Duck.gltf', (gltfModel) => {
     scene.add(gltfModel.scene.children[0]);
   });
 

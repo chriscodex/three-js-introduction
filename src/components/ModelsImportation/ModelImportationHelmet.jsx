@@ -16,17 +16,20 @@ function ModelImportationHelmet() {
   // Models
   const gltfLoader = new GLTFLoader(loadingManager);
   // Way 1
-  gltfLoader.load('/21-models/FlightHelmet/glTF/FlightHelmet.gltf', (gltf) => {
-    while (gltf.scene.children.length) {
-      const children = [...gltf.scene.children];
-      children.forEach((child) => {
-        scene.add(child);
-      });
+  gltfLoader.load(
+    '/21-class/models/FlightHelmet/glTF/FlightHelmet.gltf',
+    (gltf) => {
+      while (gltf.scene.children.length) {
+        const children = [...gltf.scene.children];
+        children.forEach((child) => {
+          scene.add(child);
+        });
+      }
     }
-  });
+  );
 
   // Way 2
-  // gltfLoader.load('/21-models/FlightHelmet/glTF/FlightHelmet.gltf', (gltf) => {
+  // gltfLoader.load('/21-class/models/FlightHelmet/glTF/FlightHelmet.gltf', (gltf) => {
   //   scene.add(gltf.scene);
   // });
 
