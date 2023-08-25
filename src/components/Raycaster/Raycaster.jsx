@@ -1,11 +1,8 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as dat from 'dat.gui'
 
 function Raycaster() {
-  const gui = new dat.GUI({ width: 400 });
-
   /* Textures */
   // Loading manager
   const loadingManager = new THREE.LoadingManager();
@@ -21,7 +18,6 @@ function Raycaster() {
   ambientLight.color = new THREE.Color(0xffffff);
   ambientLight.intensity = 0.5;
 
-  gui.add(ambientLight, 'intensity').min(0).max(1).setValue(0.01);
   scene.add(ambientLight);
 
   const pointLight = new THREE.PointLight(0xffffff, 55);
@@ -39,32 +35,27 @@ function Raycaster() {
     height: window.innerHeight,
   };
 
-  // Material
-  const material = new THREE.MeshStandardMaterial();
-  material.roughness = 0.4;
+  /**
+ * Objects
+ */
+const object1 = new THREE.Mesh(
+  new THREE.SphereGeometry(0.5, 16, 16),
+  new THREE.MeshBasicMaterial({ color: '#ff0000' })
+)
+object1.position.x = - 2
 
-  const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(0.5, 32, 32),
-    material
-  );
-  sphere.position.x = -1.5;
+const object2 = new THREE.Mesh(
+  new THREE.SphereGeometry(0.5, 16, 16),
+  new THREE.MeshBasicMaterial({ color: '#ff0000' })
+)
 
-  const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(0.75, 0.75, 0.75),
-    material
-  );
+const object3 = new THREE.Mesh(
+  new THREE.SphereGeometry(0.5, 16, 16),
+  new THREE.MeshBasicMaterial({ color: '#ff0000' })
+)
+object3.position.x = 2
 
-  const torus = new THREE.Mesh(
-    new THREE.TorusGeometry(0.3, 0.2, 32, 64),
-    material
-  );
-  torus.position.x = 1.5;
-
-  const plane = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), material);
-  plane.rotation.x = -Math.PI * 0.5;
-  plane.position.y = -0.65;
-
-  scene.add(sphere, cube, torus, plane);
+scene.add(object1, object2, object3)
 
   // Camera
   const camera = new THREE.PerspectiveCamera(
