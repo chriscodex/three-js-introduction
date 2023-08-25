@@ -39,12 +39,13 @@ import { Particles } from './components/Particles/Particles';
 import { ParticlesColors } from './components/Particles/ParticlesColors';
 import { ParticlesWave } from './components/Particles/ParticlesWave';
 import { GalaxyGenerator } from './components/GalaxyGenerator/GalaxyGenerator';
+import { Raycaster } from './components/Raycaster/Raycaster';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <GalaxyGenerator />
+      <Raycaster />
     </div>
   );
 }
