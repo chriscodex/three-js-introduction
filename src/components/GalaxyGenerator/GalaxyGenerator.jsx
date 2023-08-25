@@ -111,17 +111,6 @@ function GalaxyGenerator() {
     height: window.innerHeight,
   };
 
-  // Material
-  const materialCube = new THREE.MeshStandardMaterial();
-  materialCube.roughness = 0.4;
-
-  const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(0.75, 0.75, 0.75),
-    materialCube
-  );
-
-  scene.add(cube);
-
   // Camera
   const camera = new THREE.PerspectiveCamera(
     75,
