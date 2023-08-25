@@ -26,8 +26,8 @@ function GalaxyGenerator() {
   parameters.spin = 1;
   parameters.randomness = 0.2;
   parameters.randomnessPower = 3;
-  parameters.insideColor = '#ff6030'
-  parameters.outsideColor = '#1b3984'
+  parameters.insideColor = '#ff6030';
+  parameters.outsideColor = '#1b3984';
 
   let geometry = null;
   let material = null;
@@ -44,10 +44,12 @@ function GalaxyGenerator() {
     geometry = new THREE.BufferGeometry();
 
     const positions = new Float32Array(parameters.count * 3);
+    const colorsParticles = new Float32Array(parameters.count * 3);
 
     for (let i = 0; i < parameters.count; i++) {
       const i3 = i * 3;
 
+      // Position
       const radius = Math.random() * parameters.radius;
       const spinAngle = radius * parameters.spin;
       const branchAngle =
@@ -66,9 +68,15 @@ function GalaxyGenerator() {
       positions[i3] = Math.cos(branchAngle + spinAngle) * radius + randomX;
       positions[i3 + 1] = randomY;
       positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ;
+
+      // Colors
+      colorsParticles[i3] = 1;
+      colorsParticles[i3 + 1] = 0;
+      colorsParticles[i3 + 2] = 0;
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colorsParticles, 3));
 
     // Material
     material = new THREE.PointsMaterial({
@@ -76,6 +84,7 @@ function GalaxyGenerator() {
       sizeAttenuation: true,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
+      vertexColors: true,
     });
 
     // Points
@@ -127,12 +136,8 @@ function GalaxyGenerator() {
     .max(10)
     .step(0.001)
     .onFinishChange(generateGalaxy);
-  gui
-    .addColor(parameters, 'insideColor')
-    .onFinishChange(generateGalaxy);
-  gui
-    .addColor(parameters, 'outsideColor')
-    .onFinishChange(generateGalaxy);
+  gui.addColor(parameters, 'insideColor').onFinishChange(generateGalaxy);
+  gui.addColor(parameters, 'outsideColor').onFinishChange(generateGalaxy);
   /* Lights */
   const ambientLight = new THREE.AmbientLight();
   ambientLight.color = new THREE.Color(0xffffff);
