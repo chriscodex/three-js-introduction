@@ -19,7 +19,7 @@ function GalaxyGenerator() {
 
   /* Galaxy */
   const parameters = {};
-  parameters.count = 1000;
+  parameters.count = 20000;
   parameters.size = 0.02;
   parameters.radius = 5;
   parameters.branches = 3;
@@ -51,9 +51,9 @@ function GalaxyGenerator() {
       const branchAngle =
         ((i % parameters.branches) / parameters.branches) * Math.PI * 2;
 
-      const randomX = (Math.random() - 0.5) * parameters.randomness * radius;
-      const randomY = (Math.random() - 0.5) * parameters.randomness * radius;
-      const randomZ = (Math.random() - 0.5) * parameters.randomness * radius;
+      const randomX = Math.pow(Math.random(), parameters.randomnessPower)
+      const randomY = Math.pow(Math.random(), parameters.randomnessPower)
+      const randomZ = Math.pow(Math.random(), parameters.randomnessPower)
 
       positions[i3] = Math.cos(branchAngle + spinAngle) * radius + randomX;
       positions[i3 + 1] = randomY;
