@@ -19,7 +19,7 @@ function GalaxyGenerator() {
 
   /* Galaxy */
   const parameters = {};
-  parameters.count = 60000;
+  parameters.count = 90000;
   parameters.size = 0.02;
   parameters.radius = 5;
   parameters.branches = 3;
@@ -106,7 +106,7 @@ function GalaxyGenerator() {
   gui
     .add(parameters, 'count')
     .min(100)
-    .max(100000)
+    .max(1000000)
     .step(100)
     .onFinishChange(generateGalaxy);
   gui
