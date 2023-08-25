@@ -23,6 +23,7 @@ function GalaxyGenerator() {
   parameters.size = 0.02;
   parameters.radius = 5;
   parameters.branches = 3;
+  parameters.spin = 13;
 
   let geometry = null;
   let material = null;
@@ -92,6 +93,12 @@ function GalaxyGenerator() {
     .min(2)
     .max(20)
     .step(1)
+    .onFinishChange(generateGalaxy);
+  gui
+    .add(parameters, 'spin')
+    .min(-5)
+    .max(5)
+    .step(0.001)
     .onFinishChange(generateGalaxy);
   /* Lights */
   const ambientLight = new THREE.AmbientLight();
