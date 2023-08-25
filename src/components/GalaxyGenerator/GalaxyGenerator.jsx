@@ -19,7 +19,7 @@ function GalaxyGenerator() {
 
   /* Galaxy */
   const parameters = {};
-  parameters.count = 20000;
+  parameters.count = 60000;
   parameters.size = 0.02;
   parameters.radius = 5;
   parameters.branches = 3;
@@ -46,6 +46,9 @@ function GalaxyGenerator() {
     const positions = new Float32Array(parameters.count * 3);
     const colorsParticles = new Float32Array(parameters.count * 3);
 
+    const colorInside = new THREE.Color(parameters.insideColor);
+    const colorOutside = new THREE.Color(parameters.outsideColor);
+
     for (let i = 0; i < parameters.count; i++) {
       const i3 = i * 3;
 
@@ -70,13 +73,19 @@ function GalaxyGenerator() {
       positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ;
 
       // Colors
-      colorsParticles[i3] = 1;
-      colorsParticles[i3 + 1] = 0;
-      colorsParticles[i3 + 2] = 0;
+      const mixedColor = colorInside.clone();
+      mixedColor.lerp(colorOutside, radius / parameters.radius);
+
+      colorsParticles[i3] = mixedColor.r;
+      colorsParticles[i3 + 1] = mixedColor.g;
+      colorsParticles[i3 + 2] = mixedColor.b;
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colorsParticles, 3));
+    geometry.setAttribute(
+      'color',
+      new THREE.BufferAttribute(colorsParticles, 3)
+    );
 
     // Material
     material = new THREE.PointsMaterial({
