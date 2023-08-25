@@ -128,10 +128,10 @@ function GalaxyGenerator() {
     .step(0.001)
     .onFinishChange(generateGalaxy);
   gui
-    .add(parameters, 'insideColor')
+    .addColor(parameters, 'insideColor')
     .onFinishChange(generateGalaxy);
   gui
-    .add(parameters, 'outsideColor')
+    .addColor(parameters, 'outsideColor')
     .onFinishChange(generateGalaxy);
   /* Lights */
   const ambientLight = new THREE.AmbientLight();
