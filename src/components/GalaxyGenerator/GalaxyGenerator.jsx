@@ -26,6 +26,8 @@ function GalaxyGenerator() {
   parameters.spin = 1;
   parameters.randomness = 0.2;
   parameters.randomnessPower = 3;
+  parameters.insideColor = '#ff6030'
+  parameters.outsideColor = '#1b3984'
 
   let geometry = null;
   let material = null;
@@ -124,6 +126,12 @@ function GalaxyGenerator() {
     .min(1)
     .max(10)
     .step(0.001)
+    .onFinishChange(generateGalaxy);
+  gui
+    .add(parameters, 'insideColor')
+    .onFinishChange(generateGalaxy);
+  gui
+    .add(parameters, 'outsideColor')
     .onFinishChange(generateGalaxy);
   /* Lights */
   const ambientLight = new THREE.AmbientLight();
