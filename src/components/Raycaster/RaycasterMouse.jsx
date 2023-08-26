@@ -57,6 +57,9 @@ function RaycasterMouse() {
 
   scene.add(object1, object2, object3);
 
+  // Raycaster mouse
+  const mouse = new THREE.Vector2();
+
   // Camera
   const camera = new THREE.PerspectiveCamera(
     75,
@@ -81,6 +84,11 @@ function RaycasterMouse() {
       // Update renderer
       renderer.setSize(sizes.width, sizes.height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    });
+
+    // Min 26:21
+    window.addEventListener('mousemove', (_event) => {
+      mouse.x = (_event.clientX / sizes.width) * 2 - 1;
     });
 
     // Controls
