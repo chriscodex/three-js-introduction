@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 function ModelsImportation() {
-  /* Textures */
   // Loading manager
   const loadingManager = new THREE.LoadingManager();
 
@@ -12,6 +12,10 @@ function ModelsImportation() {
 
   // Scene - Like the scenario
   const scene = new THREE.Scene();
+
+  // Models
+  const gltfLoader = new GLTFLoader(loadingManager);
+  console.log(gltfLoader);
 
   /**
    * Floor
@@ -58,7 +62,7 @@ function ModelsImportation() {
     0.1,
     100
   );
-  camera.position.set(2, 2, 2)
+  camera.position.set(2, 2, 2);
   scene.add(camera);
 
   useEffect(() => {
