@@ -124,6 +124,10 @@ function Raycaster() {
 
       raycaster.set(rayOrigin, rayDirection);
 
+      const objectsToTest = [object1, object2, object3];
+      const intersects = raycaster.intersectObjects(objectsToTest);
+      // console.log(intersects);
+
       // Control update for damping
       controls.update();
 
