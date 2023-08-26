@@ -126,6 +126,13 @@ function Raycaster() {
 
       const objectsToTest = [object1, object2, object3];
       const intersects = raycaster.intersectObjects(objectsToTest);
+
+      objectsToTest.forEach((objectTested) => {
+        objectTested.material.color.set('#ff0000');
+      });
+      intersects.forEach((intersect) => {
+        intersect.object.material.color.set('#0000ff');
+      });
       // console.log(intersects);
 
       // Control update for damping
