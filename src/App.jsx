@@ -41,12 +41,13 @@ import { ParticlesWave } from './components/Particles/ParticlesWave';
 import { GalaxyGenerator } from './components/GalaxyGenerator/GalaxyGenerator';
 import { Raycaster } from './components/Raycaster/Raycaster';
 import { RaycasterMouse } from './components/Raycaster/RaycasterMouse';
+import { ModelsImportation } from './components/ModelsImportation/ModelsImportation';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <RaycasterMouse />
+      <ModelsImportation />
     </div>
   );
 }
