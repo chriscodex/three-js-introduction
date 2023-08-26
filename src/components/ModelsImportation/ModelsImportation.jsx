@@ -15,12 +15,9 @@ function ModelsImportation() {
 
   // Models
   const gltfLoader = new GLTFLoader(loadingManager);
-  gltfLoader.load(
-    '/21-models/Duck/glTF/Duck.gltf',
-    (gltfModel) => {
-      console.log(gltfModel);
-    },
-  );
+  gltfLoader.load('/21-models/Duck/glTF/Duck.gltf', (gltfModel) => {
+    scene.add(gltfModel.scene.children[0]);
+  });
 
   /**
    * Floor
